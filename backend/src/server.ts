@@ -4,6 +4,9 @@ import apiRoutes from "./application/route/index";
 const app = express();
 const port = 3000;
 
+// Middlewares
+app.use(express.json());
+
 // Import Routes
 app.use("/api", apiRoutes);
 
