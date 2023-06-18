@@ -1,0 +1,9 @@
+### Clone Project
+POST http://localhost:3000/api/project/clone
+Content-Type: application/json
+
+{
+  "url": "https://github.com/Raphile14/projecutor.git",
+  "clonePath": "/Users/raphile/Documents/open-source-projects/projecutor/repos",
+  "name": "projecutor"
+}
