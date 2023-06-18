@@ -1,3 +1,6 @@
+### Get List of Projects
+GET http://localhost:3000/api/project
+
 ### Clone Project
 POST http://localhost:3000/api/project/clone
 Content-Type: application/json
