@@ -1,9 +1,13 @@
 import express from "express";
 import apiRoutes from "./application/route/index";
 import responseMiddleware from "./application/middleware/ResponseMiddleware";
+import { dbInstance } from "./infra/database";
 
 const app = express();
 const port = 3000;
+
+// Database
+dbInstance.getDB();
 
 // Middlewares
 app.use(express.json());
