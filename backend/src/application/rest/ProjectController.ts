@@ -19,9 +19,7 @@ export const cloneRepository = async (req, res) => {
   const { url, clonePath, name } = req.body as ProjectCloneRequest;
 
   if (!url || !path) {
-    return res.status(400).json({
-      message: "Invalid Request Body",
-    });
+    return res.sendError({ message: "Invalid Request Body" }, 400);
   }
 
   try {
@@ -30,13 +28,16 @@ export const cloneRepository = async (req, res) => {
     await simpleGit().clone(url, path.join(clonePath, name));
   } catch (error) {
     // Send error response
-    return res.status(500).json({
-      message: "An error occurred while cloning the repository",
-      error: error.message,
-    });
+    return res.sendError(
+      {
+        message: "An error occurred while cloning the repository",
+        error: error.message,
+      },
+      500
+    );
   }
 
-  return res.status(200).json({
-    message: "Clone GitHub Repository",
+  return res.sendSuccess({
+    message: `GitHub Repository ${name} cloned successfully`,
   });
 };
